@@ -42,3 +42,33 @@ int upperBound(int arr[], int n, int target) {
     }
     return low;
 }
+
+int compare(const void *a, const void *b) {
+    return (*(int *)a - *(int *)b);
+}
+
+// Binary search for lower bound
+int lower_bound(int *arr, int n, long long target, int start) {
+    int left = start, right = n;
+    while (left < right) {
+        int mid = left + (right - left) / 2;
+        if (arr[mid] < target)
+            left = mid + 1;
+        else
+            right = mid;
+    }
+    return left;
+}
+
+// Binary search for upper bound
+int upper_bound(int *arr, int n, long long target, int start) {
+    int left = start, right = n;
+    while (left < right) {
+        int mid = left + (right - left) / 2;
+        if (arr[mid] <= target)
+            left = mid + 1;
+        else
+            right = mid;
+    }
+    return left;
+}
